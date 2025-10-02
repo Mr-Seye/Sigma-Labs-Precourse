@@ -8,14 +8,23 @@ def roman_to_int(s):
   "D": 500,
   "M": 1000
 }
+    total = 0
+    
+    for i in range(len(s)):
+        current = values[s[i]]
+        
+        # Show current symbol and value
+        print(f"Symbol: {s[i]}, Value: {current}", end=" ")
+        
+        # Check subtraction rule
+        if i + 1 < len(s) and current < values[s[i + 1]]:
+            total -= current
+            print(f"=> Subtract {current}, Total = {total}")
+        else:
+            total += current
+            print(f"=> Add {current}, Total = {total}")
+    
+    print("Final Total:", total)
+    return total
 
-  total = 0 
-  for i in range(len(s)):
-    if i + 1 < len(s) and values[s[i]] < values[s[i + 1]]:
-      total -= values[s[i]]
-    else:
-      total += values[s[i]]
-  return total
-
-
-print(roman_to_int("MCMXCIV"))
+roman_to_int("MCMXCIV")
