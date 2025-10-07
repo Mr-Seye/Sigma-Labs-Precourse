@@ -1,10 +1,13 @@
+# extended the dictionary to include a cow for the exception
 animals = [{"name": "Fluffy", "type": "dog"},
            {"name": "Parsley", "type": "dog"},
            {"name": "Ginger", "type": "cat"},
            {"name": "Biscuit", "type": "cat"},
            {"name": "Poppet", "type": "cow"}]
-
-
+'''
+checks if the pet is not a cat or dog, if so raises an exception,
+if not continues as normal.
+'''
 def say_hello_to_my_pets(pets):
     for pet in pets:
         hello_message = ""
