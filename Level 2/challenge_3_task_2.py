@@ -1,3 +1,4 @@
+# function that prints the list of dictionaries in the required format
 def print_dict(people):
     for person in people:
         print(
@@ -6,6 +7,10 @@ def print_dict(people):
             f"Employed: {'Yes' if person['employed'] else 'No'}\n"
         )
 
+''' 
+function that asks the user what function they wish to perform
+while performing some input validation
+'''
 
 def ask_action():
     while True:
@@ -17,6 +22,7 @@ def ask_action():
         print("Invalid input.")
 
 
+# function that adds a person to the list
 def add_person(people):
     new_name = input(
         "Please enter the name of the person you would like to add: ")
@@ -39,7 +45,7 @@ def add_person(people):
     print("Person added successfully!\n")
     print_dict(people)
 
-
+# function that removes a person from the list
 def remove_person(people):
     target = input("Please choose a person to remove: ").strip().lower()
     for person in people:
@@ -51,7 +57,7 @@ def remove_person(people):
     else:
         print("Person not found.\n")
 
-
+# main function to run the program
 def main():
     people = [{'name': "Jane Doe", 'age': 42, 'employed': True},
               {'name': "Tom Smith", 'age': 18, 'employed': True},
