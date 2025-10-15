@@ -1,1 +1,1 @@
-# Sigma-Labs-Precourse
+# sigma-prework
