@@ -1,7 +1,7 @@
 Simple Coin Flipping Gambling Game
 
 1. To run simply enter 
-`` "python3 game.py" ``
+`` python3 game.py ``
 2. The game will prompt the user with an option to enter either 'heads' or 'tails'.
 The game accepts the following as valid input.
 `` 'h', 't', 'heads' or 'tails' ``
