@@ -2,9 +2,11 @@
 Coin Toss Betting Game
 '''
 
+# random module for the coin flip
 from random import randint
 
 
+# function to get the inputs required to place a bet amount
 def get_bet(balance):
     while True:
         try:
@@ -19,6 +21,8 @@ def get_bet(balance):
         except ValueError:
             print("Please enter a valid integer.")
 
+# function to 'simulate' a coin toss (essentially just a 50/50 random number generator)
+
 
 def coin_toss():
     random_num = randint(0, 99)
@@ -29,6 +33,7 @@ def coin_toss():
     return outcome
 
 
+# function to get the user's outcome prediction
 def get_choice():
     while True:
         flip_choice = input(
@@ -40,31 +45,48 @@ def get_choice():
         else:
             print("Invalid input. Please type 'heads' or 'tails'.")
 
+# function to settle the outcome of the bet, award winnings and relay this information
+
 
 def settle(balance, flip_choice, outcome, bet_amount):
     if flip_choice.lower() == outcome.lower():
         winnings = int(bet_amount * 1.5)
         balance += winnings
         print(f"You won £{winnings}! \nThe coin landed on {outcome}.")
+        print(f"Your balance is now £{balance}")
+        return balance, "win"
     else:
         print(f"You lost £{bet_amount}! \nThe coin landed on {outcome}.")
-    print(f"Your balance is now £{balance}")
-    return balance
+        print(f"Your balance is now £{balance}")
+        return balance, "loss"
 
 
+# initialised values for tracking
 balance = 100
+rounds_played = 0
+wins = 0
+losses = 0
+
 print(
     f"Welcome to the coin toss game! \nThis game pays out 3 to 2. \nYour starting balance is £{balance}. ")
 
+# main program loop
 while balance > 0:
     flip_choice = get_choice()
     bet_amount, balance = get_bet(balance)
     outcome = coin_toss()
-    balance = settle(balance, flip_choice, outcome, bet_amount)
+    balance, result = settle(balance, flip_choice, outcome, bet_amount)
 
+    rounds_played += 1
+    if result == "win":
+        wins += 1
+    else:
+        losses += 1
+
+    print(f"Rounds played: {rounds_played}")
     again = input("Play again? (y/n) ").strip().lower()
     if again not in ("y", "yes"):
         break
 
 print(
-    f"Game over! Your final balance is £{balance}.")
+    f"\nGame over! You played {rounds_played} round(s): {wins} win(s), {losses} loss(es).\nYour final balance is £{balance}.")
